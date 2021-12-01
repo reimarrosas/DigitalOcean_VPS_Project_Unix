@@ -81,4 +81,4 @@ balancing techniques like CDN, proxies, etc.
 * [Firewall Setup](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04)
 * [NginX HTTP -> HTTPS Redirection](https://linuxize.com/post/redirect-http-to-https-in-nginx/)
 * [NginX Reverse Proxy for NodeJS API](https://www.tecmint.com/nginx-as-reverse-proxy-for-nodejs-app/)
-* [Automatic Certificate Renewal](https://certbot.eff.org/instructions?ws=nginx&os=ubuntu-18)
+* [Certificate Acquisition and Automatic Renewal](https://certbot.eff.org/instructions?ws=nginx&os=ubuntubionic)
