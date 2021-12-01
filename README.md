@@ -1,9 +1,10 @@
-# VPS Deployment for Web Application
+# VPS Deployment and Hosting for Web Application
 
 ## Goal
 
-The goal of this project is to demonstrate how to get a Virtual Private Server
-and modify it to host a Web Application.
+The goal of the project is to demonstrate the student's (yours truly) knowledge
+in basic system administration tasks by deploying and hosting a web application
+in a Virtual Private Server.
 
 ## Choice of VPS
 
@@ -26,8 +27,9 @@ deliberation, I narrowed it down to two VPS based on support and price.
 
 * Smaller company than Amazon
 * A bit harder to scale than AWS
-* Not as fully-featured as AWS
-* Not as prevalent as AWS
+* Lacks truly powerful features of AWS such as machine learning, Amazon powered
+  analytics, etc.
+* Not backed by world-renowned corporations like in AWS (Adobe, FINRA, AirBnB)
 
 ### Amazon AWS
 
