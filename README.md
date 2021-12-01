@@ -56,24 +56,24 @@ web server. I narrowed it to the two most popular web servers.
 * [NginX](https://www.nginx.com/)
 
 I chose NginX since Apache has a ton of features that I frankly do not need and
-will just cause unnecessary bloat like. I only need it as a Reverse Proxy and
+will just cause unnecessary bloat. I only need it as a Reverse Proxy and
 to receive HTTP requests and I didn't use PHP as my backend. Therefore, a
-simpler web server should be an obvious choice but based on what I read
-online, there's not that much difference because of leveraging various load
+simpler web server should be an obvious choice. Based on what I read
+online, however, there's not that much difference because of leveraging various load
 balancing techniques like CDN, proxies, etc.
 
 ## Technologies Used
 
 * [Digital Ocean](https://www.digitalocean.com/) as VPS to host the server
 * [NginX](https://www.nginx.com/) as web server
-* [UncomplicatedFirewall](https://wiki.ubuntu.com/UncomplicatedFirewall) Simple
+* [UncomplicatedFirewall](https://wiki.ubuntu.com/UncomplicatedFirewall) simple
   firewall for managing ports and connections
 * [systemd](https://systemd.io/) for timer scripts and handling startup services
 * [Github](https://github.com) as remote repository for this report and the
   application source code
 * [Namecheap](https://www.namecheap.com/) for domain name registration
-* [Let's Encrypt](https://letsencrypt.org/) for TLS/SSL certificate and
-  automatic certificate renewal
+* [Let's Encrypt](https://letsencrypt.org/) for TLS/SSL certificate
+* [Certbot](https://certbot.eff.org/) for automatic certificate renewal
 
 ## Documentations Used
 
