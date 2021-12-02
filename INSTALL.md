@@ -127,3 +127,17 @@ Note: Everything inside braces `{  }` are placeholder names.
         }
     }
     ```
+
+## Setup TLS/SSL Certificate and Automatic Certificate Renewal
+
+1. Switch to your created user using the command `su {USER NAME}`.
+2. Ensure that snap/snapd is up to date using the command `sudo snap install
+   core ; sudo snap refresh core`.
+3. Install Certbot, the program that automatically refreshes your Certificate,
+   using the command `sudo snap install --classic certbot`.
+4. Prepare the Certbot program using the command `sudo ln -s /snap/bin/certbot
+   /usr/bin/certbot`.
+5. Run the following command to get a certificate and automatically renew them
+   every 12 hours `sudo certbot --nginx`.
+6. To confirm that it worked, you should be able to go to `https://{Domain Name}`
+   in your browser.
