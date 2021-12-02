@@ -68,5 +68,5 @@
     | CNAME Record | www  | {Domain Name} |
 
 11. Click the `Save All Changes` button to save the DNS records.
-12. After a few seconds, you should be able to go to the domain name using your
-    browser and the NginX default Home Page.
+12. After a few seconds, you should be able to use your domain name as URL for
+    your browser and the NginX Default Home Page should show up.
