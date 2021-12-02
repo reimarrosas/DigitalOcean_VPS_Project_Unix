@@ -1,5 +1,7 @@
 # Guide for Setting up the Server
 
+Note: Everything inside braces `{  }` are placeholder names.
+
 ## Acquiring VPS from Digital Ocean
 
 1. Sign up to [Digital Ocean](https://cloud.digitalocean.com/registrations/new).
@@ -70,3 +72,58 @@
 11. Click the `Save All Changes` button to save the DNS records.
 12. After a few seconds, you should be able to use your domain name as URL for
     your browser and the NginX Default Home Page should show up.
+
+## Setting up NginX
+
+1. Go back to the Console Window of your VPS.
+2. Navigate to `/etc/nginx/sites-available`.
+3. Change the name of the `default` file to `old_default` to store it instead of
+   deleting it using the command `mv default old_default`.
+4. Create new files `default`, `{Domain Name}`, and `api.{Domain Name}` using
+   the command `touch default {Domain Name} api.{Domain Name}`
+5. Create symbolic links for each file to the `sites-enabled` directory using
+   this command for each file `ln -s {File Name} ../sites-enabled/{File Name}`.
+6. Edit the default file, enter the following code and then save:
+
+    ```nginx
+    # This code redirects all HTTP request to HTTPS
+    server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name _;
+        return 301 https://$host$request_uri;
+    }
+    ```
+
+7. Edit the base domain name file, enter the following code and then save:
+
+    ```nginx
+    # This code serves the static content for all domain name requests.
+    server {
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+
+        root /var/www/html;
+
+        index index.html;
+
+        server_name {Domain Name} www.{Domain Name};
+    }
+    ```
+
+8. Edit the api domain name file, enter the following code and then save:
+
+    ```nginx
+    # This Code redirects all requests to the api domain name to localhost:1200
+    server {
+        listen 443 ssl;
+        listen [::]:443 ssl;
+        server_name api.{Domain Name};
+
+        location / {
+                proxy_set_header X-Forwarded-For $remote_addr;
+                proxy_set_header Host $http_host;
+                proxy_pass http://localhost:1200;
+        }
+    }
+    ```
