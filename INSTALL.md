@@ -29,11 +29,44 @@
 6. Create a user using the command `adduser --ingroup sudo {USER NAME}`.
 7. Change the password of the user  using the command `passwd {USER NAME}`.
 8. Install NginX as the web server using the command `apt install nginx`.
-9. Set the firewall settings using the following commands:
+9. Enable NginX on startup using the command `systemctl enable nginx`.
+10. Start the NginX service using the command `systemctl start nginx`.
+11. Set the firewall settings using the following commands:
     1. `ufw default deny incoming`
     2. `ufw default allow outgoing`
     3. `ufw allow OpenSSH`
     4. `ufw allow 'Nginx Full'`
-10. Check the added ufw rules using the command `ufw show added`. It should show
-    that NginX and OpenSSH are enabled.
-11. Enable the firewall using the command `ufw enable`.
+12. Check the added ufw rules using the command `ufw show added`. It should show
+    that NginX and OpenSSH are allowed.
+13. Enable the firewall using the command `ufw enable`.
+
+## Setting up the Domain Name
+
+1. Go to [Namecheap](https://www.namecheap.com) website.
+2. Login to your Namecheap account. If you don't have an account, click the
+   `Account` navigation menu, click the `SIGN UP` link, and follow the
+   instructions.
+3. Search for your desired website name without the top-level domain i.e.
+   `mercatura` in the `Search for your next domain` search bar.
+4. Press `Add to cart` button for your selected domain name.
+5. Hover over the cart icon on the top-right most side of the web page and click
+   view cart.
+6. Press `Confirm Order` button and complete your purchase. Afterwards you will
+   be redirected to the Dashboard.
+7. To set up the DNS records so that the domain name will target your
+   website, click on the `MANAGE` button.
+8. Click the `Advanced DNS` menu.
+9. On the `HOST RECORDS` section, if there's any Host Record already included,
+   delete them.
+10. Click `ADD NEW RECORD` button and add the following records. You can find
+    the VPS IP in the same bar that contains the `Console` link indicated by
+    `ipv4`.
+    | Type         | Host | Value         |
+    |--------------|------|---------------|
+    | A Record     | @    | {VPS IP}      |
+    | CNAME Record | api  | {Domain Name} |
+    | CNAME Record | www  | {Domain Name} |
+
+11. Click the `Save All Changes` button to save the DNS records.
+12. After a few seconds, you should be able to go to the domain name using your
+    browser and the NginX default Home Page.
