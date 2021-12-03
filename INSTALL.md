@@ -141,3 +141,46 @@ Note: Everything inside braces `{  }` are placeholder names.
    every 12 hours `sudo certbot --nginx`.
 6. To confirm that it worked, you should be able to go to `https://{Domain Name}`
    in your browser.
+
+## Setup the Source Code
+
+1. Navigate to the directory where you want to store the source code.
+2. Clone the website repository using the command `git clone https://github.com/reimarrosas/mercatura.git`.
+3. Removed the default NginX website using the command `sudo rm -rf /var/www/html`.
+4. Create a symbolic link of the client-side code to NginX default static file
+   directory using the command `sudo ln -s ./mercatura/client /var/www/html`
+5. If you try going to the url `https://{Domain Name}`, the website should show
+   up but it would not load properly since the back-end is not yet started.
+6. Install Node Version Manager for the most up to date version of NodeJS using
+   the command `wget -qo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh
+   | bash`
+7. Refresh your bash config using the command `source ~/.bashrc`.
+8. Copy the default NVM directory. You can show the directory using the command
+   `echo $NVM_DIR`.
+9. Install node using the command `nvm install --lts`.
+10. Install the pip for later scripts using the command `sudo apt install
+    python3-pip`.
+11. Install the PostgreSQL database using the following commands:
+    1. `sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt
+       $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'`
+    2. `wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc
+       | sudo apt-key add -`
+    3. `sudo apt-get update`
+    4. `sudo apt-get -y install postgresql`
+12. Switch to the postgres user using the command `sudo -iu postgres`.
+13. Create a new role/user using the command `createuser --interactive
+    --pwprompt`. Note: Don't forget to set a password and add all the prompted roles.
+14. Create a database using the command `createdb mercatura -O {PG USER NAME}`
+15. Go back to the previous user by pressing `CTRL + d`.
+16. Install required NodeJS global packages using the command `npm i -g yarn
+   typescript`.
+17. Go to the server directory of the repository using the command `cd
+    ./mercatura/server`
+18. Install the necessary project packages using the command `yarn install`.
+19. Navigate to the database folder using the command `cd ./src/database`.
+20. Run the initialization SQL script using the command
+    `sudo psql postgres://{PG USER NAME}:{ROLE PW}@localhost:5432/mercatura -f
+    init.sql`.
+21. Run the seed data using the command
+    `sudo psql postgres:://{PG USER NAME}: {ROLE PW}@localhost:5432/mercatura -f
+    seed.sql`.
