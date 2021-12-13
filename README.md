@@ -99,5 +99,5 @@ balancing techniques like CDN, proxies, etc.
 
 ## Website
 
-[Mercatura](https://mercatura.xyz)
-[Github Repository](https://github.com/reimarrosas/DigitalOcean_VPS_Project_Unix)
+- [Mercatura](https://mercatura.xyz)
+- [Github Repository](https://github.com/reimarrosas/DigitalOcean_VPS_Project_Unix)
